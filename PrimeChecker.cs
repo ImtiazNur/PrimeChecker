@@ -8,14 +8,24 @@ class PrimeChecker
             return true;
         }
 
-        if (n <= 1 || n % 2 == 0) {
+        // if (n <= 1 || n % 2 == 0) {
+        //     return false;
+        // }
+
+
+        if (n <= 1 || n % 2 == 0 || n % 3 == 0) {
             return false;
         }
         
-        double limit = Math.Floor(Math.Sqrt(n));
+        int limit = (int)Math.Floor(Math.Sqrt(n));
         
-        for (int i = 3; i < limit; i+=2) {
-            if (n % i == 0)
+        // for (int i = 3; i < limit; i+=2) {
+        //     if (n % i == 0)
+        //         return false;
+        // }
+
+        for (int i = 5; i <= limit; i += 6) {
+            if (n % i == 0 || n % (i + 2) == 0)
                 return false;
         }
  
@@ -24,8 +34,11 @@ class PrimeChecker
     
     static void Main()
     {
-        int number = 111;
+        int number = 113;
 
         Console.WriteLine(((isPrime(number)) ? "True" : "False"));
     }
 }
+
+// Resources:
+// 1. https://en.wikipedia.org/wiki/Primality_test
